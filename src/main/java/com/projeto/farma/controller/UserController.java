@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.websocket.server.PathParam;
+import java.util.List;
 
 @RestController
 @RequestMapping("/farma")
@@ -18,7 +19,7 @@ public class UserController {
     UserService userService;
 
     @PostMapping(path = "/user")
-    public ResponseEntity<String> postUser(@RequestBody @Valid User user) throws Exception {
+    public ResponseEntity<String> postUser(@RequestBody @Valid User user) {
 
         return userService.postUser(user);
     }
@@ -30,9 +31,15 @@ public class UserController {
     }
 
     @GetMapping(path = "/user")
-    public ResponseEntity<User> testMongo(){
+    public ResponseEntity<List<User>> findUsers(){
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().body(userService.findAllUsers());
     }
 
+    @GetMapping(path = "/user/{departamento}")
+    public ResponseEntity<List<User>> findByDepartamento( @PathVariable String departamento){
+
+        userService.findByDepartamento(departamento);
+        return ResponseEntity.ok().body(userService.findByDepartamento(departamento));
+    }
 }

@@ -1,10 +1,12 @@
 package com.projeto.farma.util;
 
 import com.mongodb.*;
+import org.springframework.stereotype.Service;
 
-public class CpfCheck {
+@Service
+public class TratamentoCpfService {
 
-    public static boolean cpfRepetido(String cpf) {
+    public boolean cpfRepetido(String cpf) {
         Mongo mongo = new Mongo(new DBAddress("localhost", String.valueOf(127017)));
         DB db = mongo.getDB("farmadb");
         DBCollection collection = db.getCollection("users");

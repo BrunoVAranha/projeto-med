@@ -30,10 +30,29 @@ O projeto está configurado para criar um banco chamado "farmadb", e conectar-se
 
 ![image](https://user-images.githubusercontent.com/49883183/128279007-76ed0260-1c9e-4c71-ad45-5df5100de892.png)
 
-Assim que o usuário fornecer os inputs (nome, cpf, etc), o banco farmadb será criado (ou o banco que foi definido nas proporiedades), e para ser usado posteriormente, todo o processe de inicializar o servidor e conectar ao banco deve ser feito novamente.
+Com a aplicação rodando, deve-se utilizar o endpoint no Postman para criar uma entidade no banco de dados.
 
-![image](https://user-images.githubusercontent.com/49883183/128278445-795a5ea0-a6c1-4163-898b-685148874e38.png)
+Endpoint padrao:
 
+![image](https://user-images.githubusercontent.com/49883183/128961927-ab2e8063-53b4-4eed-8d72-bbc503fa687a.png)
+
+	http://localhost:8080/farma/user
+
+Exemplo de body (json) para utilizar no postman:
+
+	{
+    		"nome" : "teste",
+    		"sobrenome" : "teste",
+    		"cpf" : "01234567891",
+    		"departamento" : "departamentoTeste"
+	}
+	
+Se desejar remover este registro para zerar o banco de dados, utilize o endpoint para a operação DELETE, com o ID = 1:
+![image](https://user-images.githubusercontent.com/49883183/128962157-a32cb746-2b47-4c5e-8c38-84918a1d0e35.png)
+
+
+	http://localhost:8080/farma/user/1
+	
 
 
 
